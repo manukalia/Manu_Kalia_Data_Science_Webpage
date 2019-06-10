@@ -1,4 +1,4 @@
 #  local .gitignore ... set of files for git to ignore...
 
-.DS_Store
-.ipynb_checkpoints
+/Users/owner/WORKING_FILES/mk_dsi_folio/manukalia.github.io/.DS_Store
+/Users/owner/WORKING_FILES/mk_dsi_folio/manukalia.github.io/.ipynb_checkpoints
