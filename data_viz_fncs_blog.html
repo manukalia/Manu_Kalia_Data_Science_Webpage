@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MK Data Science Blog - Single Post Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <div class="KW_progressContainer">
+      <div class="KW_progressBar">
+
+      </div>
+    </div>
+    <div class="page">
+    <nav id="colorlib-main-nav" role="navigation">
+      <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+      <div class="js-fullheight colorlib-table">
+      	<div class="img" style="background-image: url(images/mk_ga_headshot.jpg);"></div>
+        <div class="colorlib-table-cell js-fullheight">
+          <div class="row no-gutters">
+            <div class="col-md-12 text-center">
+              <h1 class="mb-4"><a href="index.html" class="logo">Manu Kalia</a></h1>
+              <ul>
+                <li><a href="index.html"><span><small>00</small>Home</span></a></li>
+                <li><a href="about.html"><span><small>01</small>Resume</span></a></li>
+                <li class="active"><a href="blog.html"><span><small>02</small>Blog</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="colorlib-page">
+      <header>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="colorlib-navbar-brand">
+                <a class="colorlib-logo" href="index.html"><span class="logo-img" style="background-image: url(images/mk_headshot.jpg);"></span>Manu Kalia</a>
+              </div>
+              <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="ftco-section">
+        <div class="container mt-5">
+        	<div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+              <span>Blog</span>
+              <h2>All Things Data Science</h2>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+              <h2 class="mb-3">Handy Data Visualization Functions</h2>
+
+              <p>Spending time writing the python code to set up, format, and accurately label your EDA visualizations can drastically slow down the very real work of data inspection, cleaning, feature extraction, and feature engineering.  Many would argue that this is the real core of data science.  To that end, I'm including here some of my "go-to" functions to speed up your EDA process.  My hope is that you find these functions both useful as they are, as well as easily-customizable for your specific needs.</p>
+
+              <p>
+                <img src="images/image_1.jpg" alt="" class="img-fluid">
+              </p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>I find myself going through a fairly predictable routine when I look at a new dataset and want to do some EDA before settling on a model strategy. Over time, I’ve come to lean on a few handy functions that keep me from wasting time doing the mundane formatting and setup that matplotlib.pyplot requires. I thought I’d pass these along to the data science community in case it was helpful for others. These code blocks correspond to cells in a Jupyter notebook, but aren’t necessarily bound to that environment.</p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>You can find all of this code within the Jupyter notebook in <a href="https://github.com/manukalia/handy_data_viz_functions" target="_blank">this GitHub repository</a>.</p>
+
+              <p>For ease of demonstration, I’ll start out by fetching one of the datasets available via Sklearn, the California housing prices dataset. This happens to be a dataset that lends itself to a regression type problem, but the graphing functions I describe below would work just as well for categoricals and classification-oriented exercises… either as they are, or with minor modifications. When and if you use the plotting functions, you should of course use the dataframe that you have set up and ignore this particular dataset.</p>
+
+              <p>First, the basic imports:</p>
+
+              <p>
+                <img src="plot_blog_images/01_imports_cell.png" alt="" class="img-fluid">
+                &nbsp; &nbsp; <i>fig. 01 ... basic imports</i><br><br>
+              </p>
+
+              <p>Then, fetch the demonstration dataset and stick it in a pandas dataframe. There are 20,648 observations in this Sklearn dataset of California housing prices. The 8 feature columns reside in the _dataset.data_ structure.</p>
+
+              <p>
+                <img src="plot_blog_images/02_fetch_dataset.png" alt="" class="img-fluid">
+                &nbsp; &nbsp; <i>fig. 02 ... fetch demo dataset from Sklearn</i><br><br>
+              </p>
+
+              <p>Finally, create the target column “price” (prices, in $ 000,000) which resides in the dataset.target structure. It happens to be placed into a multilevel column index, so I will need to flatten that to one level, as below. I also verified that there were no null values, just to be sure.</p>
+
+              <p>
+                <img src="plot_blog_images/03_create_target_column.png" alt="" class="img-fluid">
+                &nbsp; &nbsp; <i>fig. 03 ... create target column</i><br><br>
+              </p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>There aren’t any non-numerical columns in this dataset, but most often, there will be plenty of data cleaning, binarizing, checking datatypes, etc. to do. But that’s not the focus of this post, so let’s assume that has all been done.</p>
+
+              <p>Now we’re ready to do some plots! Let’s start with a quick look at the Pearson correlation coefficients. Visualizing on a heatmap is a nice way to go for this task, and I hate looking at the redundant half of the ordinary correlation heatmap, so let’s also mask half of it with a white upper triangle. Here’s the code for the definition, followed by the function-call with the appropriate parameters to label and save the heatmap image as a jpeg file:</p>
+
+              <p>
+                <img src="plot_blog_images/04_masked_corr_hmap_fnc.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 04 ... half-maked correlation heatmap generator function and call</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/05_masked_corr_hmap.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 05 ... half-masked correlation heatmap output</i><br><br>
+                </p>
+              </div>
+
+              <p>As you can see, the upper right triangular half of the image is masked. It would simply have been the mirror image of the displayed lower-left half. I chose the colormap “coolwarm” as one that has a nice opposing spectrum of colors for the two opposite extremes, with a neutral color in the middle. Note that each Pearson correlation coefficient is annotated, which can be easily turned off, and that the Seaborn font-scale is set to ‘1’, which is the smallest font setting.</p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>Next, I often want to see correlations of potential features versus a specific target variable, so a variation of the Seaborn heatmap is called for.</p>
+
+              <p>
+                <img src="plot_blog_images/06_corr_to_price.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 06 ... correlation to target heatmap generator function</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/07_corr_to_price.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 07 ... correlation to target heatmap output</i><br><br>
+                </p>
+              </div>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>Looks like there might be some correlations worth exploring. Do any obvious linear relationships present themselves? A quick survey of scatterplots of each potential feature variable vs. the target is a typical next step. So I use the function below. Note that on line 22, I specified a sequence of 7 colors for the dots of the scatterplots. The function rotates continuously through this list of colors for each subplot in the feature list. Feel free to use the colors you like, and as many as you like.</p>
+
+              <p>For this particular CA Housing Prices dataset, I created the input parameter “feature_cols”, which consists of all columns in the dataframe <i>except</i> the target variable “price”. When calling the function, I saved the output image to a .jpg file, and I specified 3 subplots across, since there are 8 features in this dataset. Experiment to see which you prefer. The function defaults to one subplot per row in the figure.</p>
+
+              <p>
+                <img src="plot_blog_images/08_feat_tgt_scatter_plots_fnc.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 08 ... all features to target scatterplots generator function</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/09_feature_target_scatter_plots.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 09 ... all features to target scatterplots output</i><br><br>
+                </p>
+              </div>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>But what do the variable observations look like? Do things look normally distributed? Only a statsmodel normal test will give you a definitive answer, but visual inspection is always a good idea. Enter the “generate histograms” function:</p>
+
+              <p>
+                <img src="plot_blog_images/10_all_var_histograms_fnc.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 10 ... all variables histogram generator function</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/11_all_var_histograms.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 11 ... all variables histograms output</i><br><br>
+                </p>
+              </div>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>But what about the spread of each variable? Outliers? Not to worry, there’s a boxplots function for that!</p>
+
+              <p>
+                <img src="plot_blog_images/12_all_var_boxplots_fnc.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 12 ... all variables boxplot generator function</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/13_all_var_boxplots.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 13 ... all variables boxplots output</i><br><br>
+                </p>
+              </div>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>The last pair of functions I will include here are geared more at datasets that might be time-series (date-time) indexed. Rather than import or create a whole new dataset just for demonstration purposes, I’ll apply these line chart functions to our current CA Housing Prices dataset. Just imagine that the index is a date-time range instead of just integers.</p>
+
+              <p>
+                <img src="plot_blog_images/14_all_var_line_charts_fnc.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 14 ... all variables line charts generator function</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/15_all_var_line_charts.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 15 ... all variables line charts output</i><br><br>
+                </p>
+              </div>
+
+              <p>Depending on how much data you have, and how granular the time scale, you can see above that trends can be lost in the sheer amount of data visualized. One way to move forward with visual inspection / EDA is to apply a rolling average to the line chart. In the function below, the user specifies the number of periods in the rolling average as one of the input parameters. In this case, I chose 150 periods as an input that brought a little clarity to the charts. You could imagine that if this was a dataset consisting of 30 months worth of hourly observations, a handy one-week rolling average would be 168 periods, so this example is something close to what I have employed in the past.</p>
+
+              <p>
+                <img src="plot_blog_images/16_all_var_rolling_avg_line_charts_fnc.png" alt="" class="img-fluid"><br>
+                &nbsp; &nbsp; <i>fig. 16 ... all variables rolling avg line charts generator function</i><br><br>
+              </p>
+
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <p>
+                  <img src="plot_blog_images/17_all_var_rolling_line_charts.jpg" alt="" class="img-fluid"><br>
+                  <i>fig. 17 ... all variables rolling avg line charts output</i><br><br>
+                </p>
+              </div>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>As you can see, matplotlib does provide for nice control over the format of visualizations, but one can spend too much time on formatting commands, and not enough on the data science. I hope that these functions are useful shortcuts that you can use as the basis for your own customized functions. I left the functions here as python code in Jupyter notebook cells rather than creating a new class object, because I think their utility lies in their quick customizability, rather than in their robustness for every possible data visualization scenario. Happy EDA!</p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+
+              <br><br>
+
+              <div class="about-author d-flex pt-5">
+                <div class="bio align-self-md-center mr-4">
+                  <img src="images/mk_ga_headshot.jpg" alt="MK GA Headshot" class="img-fluid mb-4">
+                </div>
+                <div class="desc align-self-md-center">
+                  <h3>About The Author</h3>
+                  <p>Manu Kalia is a data scientist living and working in San Francisco, CA.  A curious, persistent, and articulate data-scientist & entrepreneur skilled in turning chaos into order, and coaxing insights from white noise through data science. Inspired to solve “big” problems that improve life for the many... their health, their wallets, and their environment, using domain expertise in Energy, Renewables, and SmartGrid Management.</p>
+                </div>
+              </div>
+
+              </div>
+
+            </div> <!-- .col-md-8 -->
+
+          </div>
+        </div>
+      </section>
+
+      <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-5 text-center">
+              <div class="ftco-footer-widget">
+                <h2 class="mb-3">Contact me</h2>
+                <p class="h3 email"><a href="mailto:manukalia.sf@gmail.com" target="_blank">manukalia.sf@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+
+              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true" style="color: red;"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- loader -->
+      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+      </div>
+
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
