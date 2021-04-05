@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MK Blog - CA Elec Price Fetch</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+       figcaption {
+         font-size:14px;
+         text-align:center;
+         padding:9px
+       }
+
+       .code_snippet {
+         padding-left:12px;
+         padding-rightt:12px;
+         padding-top:12px;
+         padding-bottom:1px;
+         background-color:lightgrey;
+         color:black;
+         text-align:left;
+         font-family:"Monospace";
+         font-size:14px
+       }
+    </style>
+  </head>
+  <body>
+
+    <div class="KW_progressContainer">
+      <div class="KW_progressBar">
+
+      </div>
+    </div>
+    <div class="page">
+    <nav id="colorlib-main-nav" role="navigation">
+      <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+      <div class="js-fullheight colorlib-table">
+      	<div class="img" style="background-image: url(images/mk_ga_headshot.jpg);"></div>
+        <div class="colorlib-table-cell js-fullheight">
+          <div class="row no-gutters">
+            <div class="col-md-12 text-center">
+              <h1 class="mb-4"><a href="index.html" class="logo">Manu Kalia</a></h1>
+              <ul>
+                <li><a href="index.html"><span><small>00</small>Home</span></a></li>
+                <li><a href="about.html"><span><small>01</small>Resume</span></a></li>
+                <li class="active"><a href="blog.html"><span><small>02</small>Blog</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="colorlib-page">
+      <header>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="colorlib-navbar-brand">
+                <a class="colorlib-logo" href="index.html"><span class="logo-img" style="background-image: url(images/mk_headshot.jpg);"></span>Manu Kalia</a>
+              </div>
+              <a href=Handy Data Visualization Functions"#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="ftco-section">
+        <div class="container mt-5">
+        	<div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+              <span>Blog</span>
+              <h2>All Things Data Science</h2>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+              <h2 class="mb-3">Fetch Day-ahead Electricity Prices, Published Via the California Independent System Operator (CAISO) API, at a User-specified Node, for a User-specified Daterange</h2>
+
+              <p> Use PySimpleGui to Interactively Get User-input Parameters, and Move Your Script From a Jupyter Notebook to a Python Executable</p>
+              <br>
+              <p>
+                <img src="images/US_night_960_720.jpg" alt="" class="img-fluid">
+              </p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <p>This is a simple utility that uses PySimpleGui to open dialog windows to get user inputs such as <i>date_range</i>, <i>node_name(s)</i>, and <i>destination_directory</i>. It then goes to the public API of the California Independent System Operator (CAISO) to fetch day-ahead electricity prices. From any California node, for a user-defined date range, while complying with CAISO’s public API rules.</p>
+
+              <p>Because there is a mandated five-second delay between API calls, and each data request is limited to 31 days worth of hourly data, the fetch utility runtime can be quite long. This is particularly true if the user specifies several price nodes and/or long date ranges. Therefore, it’s important to include a progress bar (also implemented with PySimpleGui) to keep the user apprised of the fetch status.</p>
+
+              <p>Finally, I want to point out that I used PySimpleGui here instead of native TKinter in order to reduce the frustration that TKinter tends to cause. I won’t say that PySimpleGui is hassle-free, but I do like that you can get simple windows and dialogs up and running very quickly. There are some limitations in terms of control and customization, but overall, a powerful tool to add to your toolbox.</p>
+
+              <p>You can find all of the code shown here, within the Jupyter notebook in <a href="https://github.com/manukalia/caiso_day-ahead_price_fetch" target="_blank">this GitHub repository</a>.</p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>How and Why to Fetch Energy Prices?</h4>
+              <p>CAISO, the California Independent System Operator is an entity tasked with keeping the electrical grid in California reliable and “always on”. It’s a task of enormous complexity and is often quite contentious. Many different stakeholders scream at the top of their lungs about their costs, compensation, public good, environmental impact, culture wars, wildfires, public safety … you name it.</p>
+
+              <p>One of the many responsibilities of CAISO is to provide all kinds information to the public, and to electricity market stakeholders. Much of this information concerns the real-time state of the electrical grid: how much power is being consumed? How much power is generated? What is the market-clearing price? The list is very long, and CAISO uses many different mechanisms to provide different types of information, but one of the major vehicles is the set of API calls available at <a href="http://oasis.caiso.com" target="_blank">this link</a>.</p>
+
+              <p>Be it a regulated utility, power plant owner, schedule coordinator, or utility market analyst, many different stakeholders are interested in the hourly prices for electricity in the “Day-ahead” market. The day-ahead market is named in this way, because prices for the next 24 hours are set by 1:00 pm PT every day. It is the way in which most market participants decide to buy or sell electricity. Many stakeholders find themselves wanting to fetch the recent history of hourly electricity prices (day-ahead market) at a specific node. And that’s where this utility comes in.</p>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Select a Node</h4>
+
+              <p>The easiest way to select an energy price node geographically (and finding its CAISO nodename) is to consult <a href="http://www.caiso.com/PriceMap/Pages/default.aspx" target="_blank">this interactive map widget</a> (published by CAISO). The image below is a zoomed-in view of San Francisco and its four CAISO price nodes, indicated by the green circles. Mousing over these circles will display the name of that node (e.g. “BAYSHOR2_1_N001”).</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/san_francisco_caiso_nodes.png" alt="" class="img-fluid">
+                <figcaption>Note the green circles that indicate CAISO price nodes</figcaption>
+              </figure>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Specify a Date-range</h4>
+
+              <p>Once you’ve chosen a node (or set of nodes) whose prices you’re interested in, then next thing to decide is what date-range you want to download. CAISO has a number of constraints that it places on the public API calls, such as a strict 31-day range limit, and restriction to one call every 5 seconds. For most analysis however, one needs at least one full year of information. Electricity demand, supply, and pricing display great deal of periodicity and seasonality. One needs to know time of day, day of week, and time of year to realistically garner a picture of what the electricity market is doing at a particular node.</p>
+
+              <p>Therefore, this utility allows a user to arbitrarily specify a start and end date, and will intelligently create “batches” for separate requests to the CAISO OASIS web site API that will fetch a continuous hourly time-series while still conforming to the API rules.</p>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Pick a Destination Directory & What Info to Save</h4>
+
+              <p>That’s it! Pick what you want to save, like interim zipped files, batch .csv files, the consolidated columnar data in .csv format, or even a binary-serialized dataframe object (.pkl file), and the application does the rest! For example, this is what an output .csv file looks like for a five-node fetch:</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/output_csv_example.png" alt="" class="img-fluid">
+                <figcaption>Output .CSV File Format Example</figcaption>
+              </figure>
+
+              <p>A “pickled” dataframe looks like this in Jupyter Notebooks, and allows for powerful matplotlib visualizations:</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/fetched_dataframe_example.png" alt="" class="img-fluid">
+                <figcaption>Example of Fetched Hourly Price Data in a Pandas Dataframe (5 nodes over 3 years)</figcaption>
+              </figure>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/dam_lmps_hrly_2nodes.jpeg" alt="" class="img-fluid">
+                <figcaption>Hourly Price Visualization for Two Nodes Over 3 Years</figcaption>
+              </figure>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/dam_lmps_mnthly_avg_2nodes.jpeg" alt="" class="img-fluid">
+                <figcaption>Same Two Nodes, Running Monthly Avg. Hourly Prices</figcaption>
+              </figure>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Typical Program Flow</h4>
+
+              <p>I initially wrote my fetch utility code in a Jupyter notebook, and did all my debugging and troubleshooting there. This formed the core of the “Do Stuff” box in the flowchart below. This little application wound up being very useful to me, personally. But I wondered if there was a way to make it a little more accessible to users who might not want to run things from Jupyter notebooks.</p>
+
+              <p>After I was certain that the functions and connective code was operating correctly, I turned my attention to the structure of what this might look like as a standalone Python script. I used a block diagram (flowchart) to keep all the steps clear in my mind as I worked on the different PySimpleGui elements that would be needed to interact with the user when the script was run.</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/SimpleGui_flowchart.png" alt="" class="img-fluid">
+                <figcaption>Typical program flowchart</figcaption>
+              </figure>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Imports and Required Libraries</h4>
+
+              <p>There are ten different modules imported and used here, which is why this utility is less than 400 lines of code, yet has robust functionality. Hooray for Python and the open source community!</p>
+
+              <p>It’s important that anyone running this script has installed Python 3.6 or above, as well as the import modules below. I won’t go into the use of Conda, HomeBrew, or Pip in this post, but there is a lot of available documentation to walk you through the installs if you don’t have any of these packages on your machine.</p>
+
+              <br>
+              <div class="code_snippet">
+                <p># CAISO Electricity Day-ahead Price Fetch Utility<br>
+                  # Manu Kalia <br>
+                  # 05-Dec-2019 <br>
+                  # All rights reservedimport pandas as pd <br><br>
+                  import wget, os, zipfile, glob, shutil <br>
+                  import time, pickle, re <br>
+                  import PySimpleGUI as sg</p>
+              </div>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>The User Inputs Window</h4>
+
+              <p>While the PySimpleGui (aliased as “sg”) may look a bit cluttered, the structure is actually very logical. There are a number of parameters like window size and font that determine the specifics of the user interface elements, most of this library is hidden behind the scenes.</p>
+
+              <p>Most aspects of the input_window are defined within the “input_window_layout” variable as shown in the code block below. Below the “input_window_layout” assignment, the “sg.Window()” call does the heavy lifting of defining a window, and applying the input_window_layout parameters.</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/code_blocks/code_user_inputs_window.png" alt="" class="img-fluid">
+                <figcaption>PySimpleGui Loop Codeblock:  User Inputs Window</figcaption>
+              </figure>
+
+              <p>Here is what the input_window code looks like in execution:</p>
+
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/user_input_window_capture.png" alt="" class="img-fluid">
+                <figcaption>User Inputs Window Screen-capture</figcaption>
+              </figure>
+
+              <p>Most importantly for our purposes, the <i>“input_window.read()”</i> method in the second-to-last line of the code block above is what gets us what we need: the user inputs. For example:</p>
+
+              <div class="code_snippet">
+                <p>event, user_input_dict = input_window.read()</p>
+              </div>
+
+              <br>
+              <p>When the <i>“submit”</i> button is activated by the user, the <i>“event”</i> becomes TRUE, and all of the elements within the window that had <i>“key”</i> values assigned to them are stored in a dictionary. I named this dictionary <i>“user_inputs_dict”</i>, and the values stored in it are what drive many of the other critical functions of this application.</p>
+
+              <p>You can see in the longer code block above that there are various <i>“InputText()”</i> and <i>“Checkbox()”</i> elements that include parameter assignments for keys. For example, take a look at the first <i>sg.InputText()</i> method call above, in which the name(s) of the CAISO nodes are requested from the user, and stored in the dictionary <i>user_inputs_dict[‘nodename_string’]</i>:</p>
+
+              <br>
+              <div class="code_snippet">
+                <p>[sg.InputText('BAYSHOR2_1_N001, LCIENEGA_6_N001, SOUTHBY_6_N001', <br>
+                   &nbsp; &nbsp; key='nodename_string', <br>
+                   &nbsp; &nbsp; font=("Raleway", 14), <br>
+                   &nbsp; &nbsp; size=(55, 1))],</p>
+              </div>
+
+              <br>
+              <p>There are 8 keys that correspond to user input variables that we gather in this input_window loop, and getting this input is the sole purpose for this user interface window:</p>
+
+              <ul style="list-style-type:disc;">
+                <li>nodename_string</li>
+                <li>start_date</li>
+                <li>end_date</li>
+                <li>keep_zipped_files (boolean)</li>
+                <li>keep_unzipped_files (boolean)</li>
+                <li>save_csv_files (boolean)</li>
+                <li>save_dataframe (boolean)</li>
+                <li>destination_folder</li>
+              </ul>
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Filesave Location Button</h4>
+
+              <p>Believe it or not, the “sg.FolderBrowse()” method (button specification) shown below (which is included in the input_window_layout code block above) is everything required to create the entire dialog box functionality! It prompts the user to select a destination directory to save files, temporary files, downloads, etc.</p>
+
+              <br>
+              <div class="code_snippet">
+                <p>[sg.Text('\n', font=("Raleway", 6))], <br>
+                      &nbsp; &nbsp; [sg.Text('_' * 80)], <br>
+                      &nbsp; &nbsp; [sg.Text('Choose filesave location:', font=("Raleway", 14))], <br>
+                      &nbsp; &nbsp; [sg.InputText('/Users/owner', <br>
+                          &nbsp; &nbsp; &nbsp; &nbsp; key='destination_folder', <br>
+                          &nbsp; &nbsp; &nbsp; &nbsp; size=(55, 1), <br>
+                          &nbsp; &nbsp; &nbsp; &nbsp; font=("Raleway", 14)), <br>
+                          &nbsp; &nbsp; &nbsp; &nbsp; sg.FolderBrowse(target='destination_folder')], <br>
+                      &nbsp; &nbsp; [sg.Submit(), sg.Cancel()]]</p>
+              </div>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/dest_dir_popup_capture.png" alt="" class="img-fluid">
+                <figcaption>Destination Directory Dialog Box Screen-capture</figcaption>
+              </figure>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Timed Popup Window for Echoing Back User Inputs</h4>
+
+              <p>Just so the user understands that the application has accepted the responses, we echo back the contents of the user_inputs_dict to the user. In this instance, I used a timed-scrolled window that closes either when the user clicks “OK”, or after 15 seconds (whichever comes first). Then the script proceeds to the next step.</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/code_blocks/code_user_inputs_echo.png" alt="" class="img-fluid">
+                <figcaption>User Inputs Echo Popup Window Codeblock</figcaption>
+              </figure>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/user_inputs_echo_popup_capture.png" alt="" class="img-fluid">
+                <figcaption>User Inputs Echo Popup Window Screen-capture</figcaption>
+              </figure>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>“Do Stuff” (fetch data) & Progress Bar Update Loop</h4>
+
+              <p>This is the meat of the fetch utility’s functionality. Please refer to the source code on Github to see what the various defined functions do. This loop takes all of the user-specified input, divides the date-range into appropriate batches, and constructs the correct API command strings for CAISO. The application waits 5 seconds (delay=5) between each call to CAISO (per CAISO’s specifications), and then unzips all the fetched files.</p>
+
+              <p>Along the way, a Progress Bar is created, displayed, and updated to keep the user apprised of the program status. Again, PySimpleGui makes this a relatively straightforward process.</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/code_blocks/code_progress_bar.png" alt="" class="img-fluid">
+                <figcaption>Progress Bar & Data Fetch Loop Codeblock</figcaption>
+              </figure>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/progress_bar_capture.png" alt="" class="img-fluid">
+                <figcaption>Progress Bar Popup Window Screen-capture</figcaption>
+              </figure>
+
+              <p>The progress bar remains visible for 4 seconds after this fetch loop is complete, then closes. The program then proceeds to the dataframe consolidation, file saving, and temporary directory deletion tasks.</p>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Program Complete Timed Popup Window</h4>
+
+              <p>Since this might be a long runtime (sometimes over an hour), it is important to signal to the user that the program has successfully completed. However, if the user is not actively observing, I wanted to allow the program to terminate. So this popup window closes after 15 seconds if there is no user response. I used the identical PopupScrolled() method described above.</p>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/code_blocks/code_program_complete_popup.png" alt="" class="img-fluid">
+                <figcaption>Program Complete Timed Popup Window Codeblock</figcaption>
+              </figure>
+
+              <br>
+              <figure>
+                <img src="price_fetch_blog_images/window_captures/program_complete_popup_capture.png" alt="" class="img-fluid">
+                <figcaption>Program Complete Timed Popup Window Screen-capture</figcaption>
+              </figure>
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+              <br>
+
+              <h4>Ideal Next Step: Freezing</h4>
+
+              <p>PySimpleGui made the transition from a Jupyter notebook to a standalone Python script fairly straightforward. I find this script to be very useful for my work in the energy and utilities industry. In the future, I’ll be expanding this script to include system operator API’s from other parts of the country: ERCOT in Texas, MISO in the midwest, NYISO in New York, ISONE in New England, and PJM in the mid-Atlantic and up to Chicago.</p>
+
+              <p>But even more interesting than geographic expansion would be the possibility of “freezing” this code into an executable app, so that anyone could double-click an icon and run this program. It would free the user from typing a command in a Terminal window, and more importantly, worrying about having installed Python and the proper set of other necessary modules.</p>
+
+              <p>Thus far, I’ve tried using <i>PyInstaller</i>, <i>py2exe /py2app</i>, and <i>cx_freeze</i>. None have worked for me so far. I suspect because I’m using ten different imported modules. If I'm unable to "freeze" this script into a cross-platform executable, then I'll be left with the fallback strategy of hosting this script (and the proper Python environment with libraries) in a Docker container.  That will likely be the topic of a future article. In the meantime, go fetch!</p>
+
+
+
+              <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+
+              <br>
+              <h4>Resources:</h4>
+
+              <ul style="list-style-type:disc;">
+                <li>For the full Python script, go to the GitHub repository
+                <a href="https://github.com/manukalia/caiso_day-ahead_price_fetch" target="_blank">here</a>.</li>
+
+                <li>The PySimpleGui user manual & cookbook can be found
+                <a href="https://pysimplegui.readthedocs.io/en/latest/#this-readme-and-cookbook" target="_blank">here</a>.</li>
+
+                <li>The CAISO price map can be found
+                <a href="http://www.caiso.com/PriceMap/Pages/default.aspx" target="_blank">here</a>.</li>
+
+                <li>The CAISO OASIS API website for LMP price downloads can be found at
+                <a href="http://oasis.caiso.com" target="_blank">this link</a>.</li>
+              </ul>
+
+
+
+
+              <br> <br>
+              <div class="col-md-12 text-center heading-section ftco-animate">
+                <h7>* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</h7>
+              </div>
+
+
+              <br><br>
+
+              <div class="about-author d-flex pt-5">
+                <div class="bio align-self-md-center mr-4">
+                  <img src="images/mk_ga_headshot.jpg" alt="MK GA Headshot" class="img-fluid mb-4">
+                </div>
+                <div class="desc align-self-md-center">
+                  <h3>About The Author</h3>
+                  <p>Manu Kalia is a data scientist living and working in San Francisco, CA.  A curious, persistent, and articulate data-scientist & entrepreneur skilled in turning chaos into order, and coaxing insights from white noise through data science. Inspired to solve “big” problems that improve life for the many... their health, their wallets, and their environment, using domain expertise in Energy, Renewables, and SmartGrid Management.</p>
+                </div>
+              </div>
+
+              </div>
+
+            </div> <!-- .col-md-8 -->
+
+          </div>
+        </div>
+      </section>
+
+      <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-5 text-center">
+              <div class="ftco-footer-widget">
+                <h2 class="mb-3">Contact me</h2>
+                <p class="h3 email"><a href="mailto:manukalia.sf@gmail.com" target="_blank">manukalia.sf@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+
+              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true" style="color: red;"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- loader -->
+      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+      </div>
+
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
